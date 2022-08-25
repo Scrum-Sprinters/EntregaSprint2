@@ -1,0 +1,57 @@
+package Entidades;
+
+import javax.persistence.*;
+
+public class MovimientoDinero {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private double monto = 1000.;
+    private String usuario = "jhalzate";
+    private String concepto = "klll";
+    @ManyToOne
+    @JoinColumn(name = "empleado_id")
+    private Empleado empleado;
+
+    public static void main(String[] args) {
+
+        MovimientoDinero myObj = new MovimientoDinero("jjjjj", -5555, "staff");
+        System.out.println(myObj.concepto);
+        System.out.println(myObj.usuario);
+        System.out.println(myObj.monto);
+        MovimientoDinero myObj2 = new MovimientoDinero("jhalzate", 1258.00000000000055, "servicio gas");
+        System.out.println(myObj2.concepto);
+        System.out.println(myObj2.usuario);
+        System.out.println(myObj2.monto);
+    }
+    public MovimientoDinero(String usuario, double monto, String concepto){
+        this.usuario = usuario;
+        this.monto = monto;
+        this.concepto = concepto;
+    }
+
+    public String getConcepto() {
+        return concepto;
+    }
+
+    public void setConcepto(String concepto) {
+        this.concepto = concepto;
+    }
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+}
